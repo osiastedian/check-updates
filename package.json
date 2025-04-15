@@ -1,0 +1,14 @@
+{
+  "name": "@osiastedian/check-updates",
+  "version": "1.0.0",
+  "description": "Check Package.json updates",
+  "main": "index.js",
+  "bin": {
+    "check-updates": "./index.js"
+  },
+  "keywords": [
+    "utility"
+  ],
+  "author": "osiastedian",
+  "license": "MIT"
+}
