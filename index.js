@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 
-const fs = require("fs");
-const https = require("https");
-const path = require("path");
+import fs from "fs";
+import https from "https";
+import path from "path";
+import chalk from "chalk";
+import ora from "ora";
 
 const [, , pkgPathArg] = process.argv;
 const pkgPath = pkgPathArg || "./package.json";
@@ -52,7 +54,9 @@ function parseVersion(version) {
 }
 
 (async () => {
-  console.log("🔍 Checking for updates (same major versions only)...\n");
+  const spinner = ora(
+    "🔍 Checking for updates (same major versions only)...\n"
+  ).start();
 
   const results = await Promise.all(
     Object.entries(dependencies).map(async ([pkg, currentRaw]) => {
@@ -63,7 +67,7 @@ function parseVersion(version) {
         const [latMajor] = latest.split(".");
 
         if (curMajor === latMajor && current !== latest) {
-          return `${pkg} ${current} -> ${latest}`;
+          return `${pkg} ${chalk.redBright(current)} -> ${chalk.greenBright(latest)}`;
         }
       } catch (err) {
         console.warn(`⚠️ Could not fetch info for ${pkg}: ${err}`);
@@ -71,7 +75,7 @@ function parseVersion(version) {
       return null;
     })
   );
-
+  spinner.stop();
   const updates = results.filter(Boolean);
   if (updates.length === 0) {
     console.log("✅ All packages are up to date within their major versions.");

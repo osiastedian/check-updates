@@ -1,8 +1,9 @@
 {
   "name": "@osiastedian/check-updates",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Check for available same-major-version updates in your package.json",
   "main": "index.js",
+  "type": "module",
   "bin": {
     "check-updates": "./index.js"
   },
@@ -18,5 +19,9 @@
   "author": "Osiastedian",
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "ora": "^8.2.0"
   }
 }
