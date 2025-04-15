@@ -1,14 +1,22 @@
 {
   "name": "@osiastedian/check-updates",
   "version": "1.0.0",
-  "description": "Check Package.json updates",
+  "description": "Check for available same-major-version updates in your package.json",
   "main": "index.js",
   "bin": {
     "check-updates": "./index.js"
   },
-  "keywords": [
-    "utility"
-  ],
-  "author": "osiastedian",
-  "license": "MIT"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/osiastedian/check-updates.git"
+  },
+  "bugs": {
+    "url": "https://github.com/osiastedian/check-updates/issues"
+  },
+  "homepage": "https://github.com/osiastedian/check-updates#readme",
+  "license": "MIT",
+  "author": "Osiastedian",
+  "publishConfig": {
+    "access": "public"
+  }
 }
